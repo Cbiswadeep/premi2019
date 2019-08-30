@@ -1,0 +1,8 @@
+M=importdata('TrialData.csv')
+%hilbert(M.data(1:255,2));
+for k= 0:4
+    hilbert(M.data(28*k+1:28*k+5,2)
+    %phase(:,k) = hilbert(M.data(28*k+1:28*k+5,2))
+end
+%phase1= atan2(imag(phase), real(phase));
+%plot(1:255,phase1)

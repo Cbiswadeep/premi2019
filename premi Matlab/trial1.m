@@ -1,0 +1,27 @@
+ %%%%%Program to calculate the power spectrum of EEG signal%%%%
+ clear all; 
+ clc; 
+M=importdata('alchohal_dataset.csv');
+data = M.data(:,2);
+figure(1); 
+xlabel('sample'); 
+ylabel('magnitude'); 
+plot(data); 
+legend('14 channel plot of subject1 BASELINE'); 
+data= data'; 
+value1=data(1,:); 
+chan1= value1-mean(value1); 
+fs=128;
+d=1/fs; 
+t=[0:length(chan1)-1]*d; 
+figure(2); 
+plot(chan1);
+title('original signal'); 
+fs=fft(chan1,128); 
+pp=fs.*conj(fs)/128; 
+ff=(0:63)/128/d; 
+figure(3); 
+plot(ff,pp(0:63)); 
+ylabel('power spectrum density');
+xlabel('frequency');
+title('signal power spectrum');
